@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Happy 17th Birthday, Rani 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Quicksand:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rose: #f9a8c9;
+    --deep-rose: #e05a8a;
+    --lavender: #d9b8f0;
+    --soft-purple: #b889e0;
+    --cream: #fff5f8;
+    --gold: #f7c948;
+    --text-dark: #5a3060;
+    --text-mid: #8a5090;
+  }
+
+  html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: 'Quicksand', sans-serif;
+    background: #fff0f5;
+  }
+
+  /* ─── SCREENS ─── */
+  .screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+    overflow: hidden;
+  }
+  .screen.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ─── ANIMATED BACKGROUND ─── */
+  .bg-bubbles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    animation: floatUp linear infinite;
+    opacity: 0.25;
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(110vh) scale(0.5); opacity: 0; }
+    10%  { opacity: 0.3; }
+    90%  { opacity: 0.2; }
+    100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
+  }
+
+  /* ═══════════════════════════════════
+     SCREEN 1 — OPENING
+  ═══════════════════════════════════ */
+  #screen-open {
+    background: linear-gradient(145deg, #fce4ec 0%, #f8bbd0 30%, #e1bee7 70%, #f3e5f5 100%);
+  }
+  .open-content { position: relative; z-index: 1; text-align: center; padding: 20px; }
+
+  /* TEDDY BEAR SVG */
+  .teddy-wrap {
+    width: 200px;
+    height: 210px;
+    margin: 0 auto 10px;
+    animation: teddyFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 12px 24px rgba(224,90,138,0.35));
+  }
+  @keyframes teddyFloat {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50%       { transform: translateY(-14px) rotate(2deg); }
+  }
+
+  .heart-beat {
+    animation: heartBeat 1.1s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    14%      { transform: scale(1.25); }
+    28%      { transform: scale(1); }
+    42%      { transform: scale(1.2); }
+    56%      { transform: scale(1); }
+  }
+
+  .open-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    color: var(--deep-rose);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 8px rgba(224,90,138,0.25);
+  }
+  .open-sub {
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
+    color: var(--text-mid);
+    margin-bottom: 30px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  .start-btn {
+    background: linear-gradient(135deg, var(--deep-rose), var(--soft-purple));
+    color: #fff;
+    border: none;
+    padding: 14px 38px;
+    border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    box-shadow: 0 8px 24px rgba(224,90,138,0.45);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .start-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50px;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .start-btn:active::after { transform: scaleX(1); }
+  .start-btn:active { transform: scale(0.96); box-shadow: 0 4px 12px rgba(224,90,138,0.4); }
+
+  /* ═══════════════════════════════════
+     SCREEN 2 — MESSAGE
+  ═══════════════════════════════════ */
+  #screen-msg {
+    background: linear-gradient(160deg, #fff0f5 0%, #f8e8ff 50%, #ffe8f3 100%);
+  }
+  .msg-card {
+    position: relative;
+    z-index: 1;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 30px 26px;
+    margin: 16px;
+    max-width: 420px;
+    width: calc(100% - 32px);
+    box-shadow: 0 8px 40px rgba(209,100,160,0.15), 0 2px 8px rgba(0,0,0,0.05);
+    border: 1.5px solid rgba(255,180,210,0.5);
+  }
+  .msg-emoji { font-size: 2.2rem; margin-bottom: 10px; display: block; }
+  .msg-heading {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    color: var(--deep-rose);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .msg-body {
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    color: var(--text-dark);
+    line-height: 1.85;
+    min-height: 120px;
+    font-weight: 500;
+  }
+  .cursor-blink {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    background: var(--deep-rose);
+    vertical-align: middle;
+    margin-left: 2px;
+    animation: blink 0.8s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .next-btn {
+    margin-top: 22px;
+    background: linear-gradient(135deg, #f9a8c9, #d986cc);
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(217,130,200,0.4);
+    transition: transform 0.2s, opacity 0.3s;
+    opacity: 0;
+  }
+  .next-btn.show { opacity: 1; }
+  .next-btn:active { transform: scale(0.96); }
+
+  /* ═══════════════════════════════════
+     SCREEN 3 — PHOTO GALLERY
+  ═══════════════════════════════════ */
+  #screen-gallery {
+    background: linear-gradient(150deg, #fce4f0 0%, #ece8ff 100%);
+  }
+  .gallery-wrap { position: relative; z-index: 1; width: 100%; padding: 16px; text-align: center; }
+  .gallery-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    color: var(--deep-rose);
+    margin-bottom: 16px;
+    text-shadow: 0 2px 8px rgba(224,90,138,0.2);
+  }
+
+  .slider-outer {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    max-width: 340px;
+    margin: 0 auto;
+    box-shadow: 0 12px 40px rgba(170,80,140,0.25);
+  }
+  .slides-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .slide {
+    min-width: 100%;
+    position: relative;
+  }
+  .photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #fdd9ea, #e8d5f8);
+    font-size: 3.5rem;
+    gap: 10px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-placeholder img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .photo-placeholder .ph-label {
+    position: relative;
+    z-index: 1;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    font-weight: 600;
+    text-align: center;
+    padding: 0 20px;
+  }
+  .slide-img {
+    display: block;
+  }
+  .slide-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(100,30,70,0.7));
+    color: #fff;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    padding: 30px 16px 14px;
+    border-radius: 0 0 20px 20px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  }
+
+  .slider-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 14px;
+  }
+  .arr-btn {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.85);
+    color: var(--deep-rose);
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(224,90,138,0.2);
+    transition: transform 0.2s, background 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .arr-btn:active { transform: scale(0.9); background: #ffe0ee; }
+
+  .slide-dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 10px;
+  }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #e8b8d0;
+    transition: background 0.3s, transform 0.3s;
+    cursor: pointer;
+  }
+  .dot.active { background: var(--deep-rose); transform: scale(1.3); }
+
+  .gallery-next-btn {
+    margin-top: 18px;
+    background: linear-gradient(135deg, var(--deep-rose), var(--soft-purple));
+    color: #fff;
+    border: none;
+    padding: 11px 28px;
+    border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(184,137,224,0.35);
+  }
+  .gallery-next-btn:active { transform: scale(0.96); }
+
+  /* ═══════════════════════════════════
+     SCREEN 4 — MEMORY BOOK
+  ═══════════════════════════════════ */
+  #screen-book {
+    background: linear-gradient(160deg, #fff3fb 0%, #f0e6ff 100%);
+  }
+  .book-wrap { position: relative; z-index: 1; width: 100%; padding: 16px; text-align: center; }
+  .book-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    color: var(--text-dark);
+    margin-bottom: 16px;
+  }
+
+  .book {
+    position: relative;
+    max-width: 340px;
+    margin: 0 auto;
+    perspective: 1200px;
+  }
+  .book-page {
+    background: rgba(255,255,255,0.9);
+    border-radius: 4px 20px 20px 4px;
+    box-shadow: 4px 4px 30px rgba(150,80,120,0.18), inset -3px 0 8px rgba(150,80,120,0.06);
+    padding: 28px 24px;
+    min-height: 280px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    border-left: 4px solid #f0b8d4;
+    text-align: left;
+    animation: pageReveal 0.6s ease;
+  }
+  .book-page.active { display: flex; }
+  @keyframes pageReveal {
+    from { opacity: 0; transform: rotateY(-15deg) translateX(-10px); }
+    to   { opacity: 1; transform: rotateY(0) translateX(0); }
+  }
+  .page-num {
+    position: absolute;
+    bottom: 14px; right: 18px;
+    font-size: 0.75rem;
+    color: #cca0c0;
+    font-weight: 600;
+  }
+  .page-emoji { font-size: 2rem; margin-bottom: 10px; }
+  .page-heading {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    color: var(--deep-rose);
+    margin-bottom: 10px;
+  }
+  .page-text {
+    font-size: 0.92rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+    font-weight: 500;
+  }
+  .page-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, #f9a8c9, transparent);
+    margin: 12px 0;
+  }
+
+  .book-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 16px;
+  }
+  .book-btn {
+    background: rgba(255,255,255,0.85);
+    border: 1.5px solid #f0b8d4;
+    color: var(--deep-rose);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 12px rgba(224,90,138,0.15);
+    transition: transform 0.2s, background 0.2s;
+  }
+  .book-btn:disabled { opacity: 0.35; cursor: default; }
+  .book-btn:not(:disabled):active { transform: scale(0.9); background: #ffe0ee; }
+  .page-counter { font-size: 0.85rem; color: var(--text-mid); font-weight: 600; }
+
+  .book-end-btn {
+    margin-top: 18px;
+    background: linear-gradient(135deg, var(--deep-rose), #c860c0);
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(200,96,192,0.35);
+  }
+
+  /* ═══════════════════════════════════
+     SCREEN 5 — FINAL
+  ═══════════════════════════════════ */
+  #screen-final {
+    background: linear-gradient(145deg, #fce4ec 0%, #e8d5f8 50%, #fce4ec 100%);
+  }
+  .final-content { position: relative; z-index: 2; text-align: center; padding: 20px; max-width: 400px; }
+
+  .sparkle-ring {
+    width: 160px; height: 160px;
+    margin: 0 auto 20px;
+    position: relative;
+    animation: spinSlow 12s linear infinite;
+  }
+  .sparkle-ring svg { width: 100%; height: 100%; }
+  @keyframes spinSlow { to { transform: rotate(360deg); } }
+
+  .big-heart {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+    animation: teddyFloat 2.5s ease-in-out infinite, heartBeat 1.5s ease-in-out infinite;
+    animation-iteration-count: infinite, infinite;
+  }
+
+  .final-title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+    background: linear-gradient(135deg, var(--deep-rose), var(--soft-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+  .final-msg {
+    font-size: clamp(0.88rem, 3.5vw, 0.98rem);
+    color: var(--text-dark);
+    line-height: 1.85;
+    margin-bottom: 24px;
+    font-weight: 500;
+    background: rgba(255,255,255,0.6);
+    padding: 18px 20px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,180,210,0.4);
+    backdrop-filter: blur(8px);
+  }
+
+  .glow-btn {
+    background: linear-gradient(135deg, var(--deep-rose), var(--soft-purple), #f7a0d0);
+    background-size: 200% 200%;
+    color: #fff;
+    border: none;
+    padding: 15px 36px;
+    border-radius: 50px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.35rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(224,90,138,0.5), 0 8px 24px rgba(224,90,138,0.3);
+    animation: glowPulse 2s ease-in-out infinite, gradientShift 4s ease infinite;
+    transition: transform 0.2s;
+  }
+  @keyframes glowPulse {
+    0%,100% { box-shadow: 0 0 20px rgba(224,90,138,0.4), 0 8px 24px rgba(224,90,138,0.25); }
+    50%      { box-shadow: 0 0 45px rgba(224,90,138,0.7), 0 12px 32px rgba(224,90,138,0.4); }
+  }
+  @keyframes gradientShift {
+    0%,100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+  }
+  .glow-btn:active { transform: scale(0.96); }
+
+  /* ─── FLOATING HEARTS (final screen) ─── */
+  .float-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    pointer-events: none;
+    animation: floatHeart linear infinite;
+    z-index: 1;
+  }
+  @keyframes floatHeart {
+    0%   { transform: translateY(0) translateX(0) scale(0.5) rotate(0deg); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 0.7; }
+    100% { transform: translateY(-100vh) translateX(var(--drift)) scale(1.2) rotate(30deg); opacity: 0; }
+  }
+
+  /* ─── MUSIC BUTTON ─── */
+  #music-btn {
+    position: fixed;
+    top: 14px; right: 14px;
+    z-index: 999;
+    background: rgba(255,255,255,0.8);
+    border: 1.5px solid #f0b8d4;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 14px rgba(224,90,138,0.2);
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s;
+  }
+  #music-btn:active { transform: scale(0.9); }
+
+  /* ─── NAV DOTS ─── */
+  #nav-dots {
+    position: fixed;
+    bottom: 16px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: 8px;
+    z-index: 998;
+  }
+  .nav-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(224,90,138,0.3);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .nav-dot.active { background: var(--deep-rose); transform: scale(1.4); }
+
+  /* ─── TOAST ─── */
+  #toast {
+    position: fixed;
+    bottom: 50px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(90,48,96,0.85);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.4s, transform 0.4s;
+    z-index: 9999;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ─── SWIPE HINT ─── */
+  .swipe-hint {
+    font-size: 0.78rem;
+    color: var(--text-mid);
+    margin-top: 8px;
+    opacity: 0.7;
+    animation: fadeInOut 3s ease-in-out forwards;
+  }
+  @keyframes fadeInOut {
+    0%{opacity:0} 20%{opacity:0.7} 70%{opacity:0.7} 100%{opacity:0}
+  }
+
+  /* ═══════════════════════════════════
+     SCREEN 6 — LOVE MESSAGE
+  ═══════════════════════════════════ */
+  #screen-love {
+    background: linear-gradient(145deg, #ffe6f0 0%, #f0e6ff 50%, #e6f0ff 100%);
+  }
+  .love-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .teddy-love {
+    width: 180px;
+    height: 200px;
+    margin: 0 auto 20px;
+    animation: teddyLoveFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 12px 24px rgba(224,90,138,0.4));
+  }
+  @keyframes teddyLoveFloat {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    25%      { transform: translateY(-10px) rotate(1deg); }
+    50%      { transform: translateY(-20px) rotate(0deg); }
+    75%      { transform: translateY(-10px) rotate(-1deg); }
+  }
+  .love-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    color: var(--deep-rose);
+    margin-bottom: 20px;
+    text-shadow: 0 4px 12px rgba(224,90,138,0.3);
+    animation: loveGlow 2s ease-in-out infinite alternate;
+  }
+  @keyframes loveGlow {
+    0% { text-shadow: 0 4px 12px rgba(224,90,138,0.3); }
+    100% { text-shadow: 0 4px 20px rgba(224,90,138,0.6), 0 0 30px rgba(249,168,201,0.5); }
+  }
+  .heart-from-teddy {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    animation: heartFly 3s ease-in-out infinite;
+    color: #e91e63;
+  }
+</style>
+</head>
+<body>
+
+<!-- ───────────────────────────────────────
+     MUSIC BUTTON
+──────────────────────────────────────── -->
+<button id="music-btn" title="Toggle music">🎵</button>
+<audio id="bg-music" loop></audio>
+
+<!-- ───────────────────────────────────────
+     NAV DOTS
+──────────────────────────────────────── -->
+<div id="nav-dots">
+  <div class="nav-dot active"></div>
+  <div class="nav-dot"></div>
+  <div class="nav-dot"></div>
+  <div class="nav-dot"></div>
+  <div class="nav-dot"></div>
+</div>
+
+<div id="toast"></div>
+
+<!-- ═══════════════════════════════════════
+     SCREEN 1 — OPENING
+════════════════════════════════════════ -->
+<div class="screen active" id="screen-open">
+  <div class="bg-bubbles" id="bubbles-open"></div>
+  <div class="open-content">
+
+    <!-- TEDDY BEAR SVG -->
+    <div class="teddy-wrap">
+      <svg viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ears -->
+        <circle cx="55" cy="52" r="26" fill="#d4956a"/>
+        <circle cx="145" cy="52" r="26" fill="#d4956a"/>
+        <circle cx="55" cy="52" r="16" fill="#e8b48a"/>
+        <circle cx="145" cy="52" r="16" fill="#e8b48a"/>
+        <!-- Body -->
+        <ellipse cx="100" cy="155" rx="55" ry="52" fill="#d4956a"/>
+        <!-- Head -->
+        <circle cx="100" cy="88" r="54" fill="#d4956a"/>
+        <!-- Face -->
+        <circle cx="100" cy="92" r="32" fill="#e8b48a"/>
+        <!-- Eyes -->
+        <circle cx="85" cy="82" r="7" fill="#5a3020"/>
+        <circle cx="115" cy="82" r="7" fill="#5a3020"/>
+        <circle cx="87" cy="80" r="2.5" fill="#fff"/>
+        <circle cx="117" cy="80" r="2.5" fill="#fff"/>
+        <!-- Nose -->
+        <ellipse cx="100" cy="96" rx="8" ry="5.5" fill="#b06040"/>
+        <!-- Mouth -->
+        <path d="M90 104 Q100 114 110 104" stroke="#b06040" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Blush -->
+        <circle cx="76" cy="100" r="10" fill="#f9a8c9" opacity="0.55"/>
+        <circle cx="124" cy="100" r="10" fill="#f9a8c9" opacity="0.55"/>
+        <!-- Belly -->
+        <ellipse cx="100" cy="155" rx="30" ry="26" fill="#e8b48a"/>
+        <!-- Arms -->
+        <ellipse cx="47" cy="140" rx="18" ry="12" fill="#d4956a" transform="rotate(-30 47 140)"/>
+        <ellipse cx="153" cy="140" rx="18" ry="12" fill="#d4956a" transform="rotate(30 153 140)"/>
+        <!-- Paws -->
+        <ellipse cx="36" cy="152" rx="14" ry="10" fill="#c07850"/>
+        <ellipse cx="164" cy="152" rx="14" ry="10" fill="#c07850"/>
+        <!-- Legs -->
+        <ellipse cx="78" cy="198" rx="18" ry="13" fill="#d4956a"/>
+        <ellipse cx="122" cy="198" rx="18" ry="13" fill="#d4956a"/>
+        <!-- Heart in paws -->
+        <g class="heart-beat" transform="translate(68, 150)">
+          <path d="M16 28 Q-2 14 2 4 Q6 -4 16 2 Q26 -4 30 4 Q34 14 16 28Z"
+                fill="#e05a8a" stroke="#fff" stroke-width="1.5"/>
+        </g>
+      </svg>
+    </div>
+
+    <h1 class="open-title">Hey Rani! 🎀</h1>
+    <p class="open-sub">Someone made something special just for you ✨</p>
+    <button class="start-btn" onclick="gotoScreen(1)">Tap to Open 💝</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SCREEN 2 — MESSAGE
+════════════════════════════════════════ -->
+<div class="screen" id="screen-msg">
+  <div class="bg-bubbles" id="bubbles-msg"></div>
+  <div class="msg-card">
+    <span class="msg-emoji">🌸</span>
+    <h2 class="msg-heading">Happy 17th Birthday, Rani!</h2>
+    <p class="msg-body" id="typing-text"><span class="cursor-blink"></span></p>
+    <button class="next-btn" id="msg-next-btn" onclick="gotoScreen(2)">See Our Memories 📸</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SCREEN 3 — PHOTO GALLERY
+════════════════════════════════════════ -->
+<div class="screen" id="screen-gallery">
+  <div class="bg-bubbles" id="bubbles-gallery"></div>
+  <div class="gallery-wrap">
+    <h2 class="gallery-title">📸 Our Moments</h2>
+
+    <div class="slider-outer" id="slider" 
+         ontouchstart="touchStart(event)" ontouchend="touchEnd(event)">
+      <div class="slides-track" id="slides-track">
+
+        <!-- SLIDE 1 — Actual photo -->
+        <div class="slide">
+          <div class="photo-placeholder">
+            <img class="slide-img" src="R1.png" alt="Rani Photo 1">
+          </div>
+          <div class="slide-caption">Meri favourite smile ☺️</div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="slide">
+          <div class="photo-placeholder">
+            🌸
+            <img src="R2.png" alt="rni5">
+          </div>
+          <div class="slide-caption">Jab aap hasti hain, sab roshan ho jaata hai 💫</div>
+        </div>
+
+        <!-- SLIDE 3 — Actual photo -->
+        <div class="slide">
+          <div class="photo-placeholder">
+            <img class="slide-img" src="R5.png" alt="Rani Photo 3">
+          </div>
+          <div class="slide-caption">Aap bilkul unique hain, aapke jaise koi nahi 🦋</div>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <div class="slide">
+          <div class="photo-placeholder">
+            💕
+           <img src="R3.png" alt="RNI3">
+          </div>
+          <div class="slide-caption">Ye wala moment yaad hai mujhe 🌙</div>
+        </div>
+
+        <!-- SLIDE 5 -->
+        <div class="slide">
+          <div class="photo-placeholder">
+            🌷
+            <img src="R4.png" alt="Rni">
+          </div>
+          <div class="slide-caption">Aapki har ek pal beautiful hai 🌈</div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="swipe-hint" id="swipe-hint">← Swipe to see more →</p>
+
+    <div class="slider-arrows">
+      <button class="arr-btn" onclick="prevSlide()">‹</button>
+      <div class="slide-dots" id="slide-dots"></div>
+      <button class="arr-btn" onclick="nextSlide()">›</button>
+    </div>
+
+    <button class="gallery-next-btn" onclick="gotoScreen(3)">Read Our Story 📖</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SCREEN 4 — MEMORY BOOK
+════════════════════════════════════════ -->
+<div class="screen" id="screen-book">
+  <div class="bg-bubbles" id="bubbles-book"></div>
+  <div class="book-wrap">
+    <h2 class="book-title">📖 Our Little Story</h2>
+
+    <div class="book">
+      <!-- PAGE 1 -->
+      <div class="book-page active" data-page="0">
+        <div class="page-emoji">🌱</div>
+        <div class="page-heading">Jab Pehli Baar Dekha...</div>
+        <div class="page-line"></div>
+        <p class="page-text">
+          Kuch cheezein aisi hoti hain jo words mein nahi aati...
+          bas dil pe likh jaati hain, jaise ek gehri si neend mein
+          sapna jo sach ho jaata. Aapko dekhne ke baad kuch
+          aisa hi hua — mann ka ek kone mein ek roshni jag gayi,
+          jo kabhi bujhegi nahi. Aap thi hi alag — aapki aankhen
+          jaise taarein chamakti hain, aapki hasi jaise phoolon ka
+          rang, aapka andaz jaise ek nazarana jo dil ko chhune ko
+          tarasta hai. 🌸💖
+        </p>
+        <div class="page-num">Page 1 / 4</div>
+      </div>
+
+      <!-- PAGE 2 -->
+      <div class="book-page" data-page="1">
+        <div class="page-emoji">💬</div>
+        <div class="page-heading">Woh Baatein...</div>
+        <div class="page-line"></div>
+        <p class="page-text">
+          Aapki baatein sunna acha lagta hai, jaise ek sukoon bhari
+          raat mein chand ki kiran. Aap jab baat karti hain,
+          honestly, sab kuch simple aur sach lagta hai — dil ki
+          gehraiyon se nikalta ek saaf sa paani. Aapke saath
+          time kaise khatam ho jaata hai — pata hi nahi chalta,
+          jaise ek sapna jo kabhi khatam na ho. Yehi magic hai na
+          aapke andar, jo mujhe har pal mein kho jaane ko majboor
+          karta hai? ✨❤️
+        </p>
+        <div class="page-num">Page 2 / 4</div>
+      </div>
+
+      <!-- PAGE 3 -->
+      <div class="book-page" data-page="2">
+        <div class="page-emoji">🌙</div>
+        <div class="page-heading">Jo Yaad Rahega...</div>
+        <div class="page-line"></div>
+        <p class="page-text">
+          Ye din, ye 17th birthday — ye aapki zindagi ka ek naya
+          chapter hai, jaise ek kitab ka woh pehla panna jo
+          kahaniyon se bhara hota hai. Bahut saare khwaab hain
+          aapke liye — aap unhe poora karengi, mujhe pura yaqeen
+          hai, kyunki aapke andar woh takat hai jo duniya ko
+          badal sakti hai. Aapki ye journey dekhna mujhe sachchi
+          khushi deta hai, jaise ek painter apni painting ko
+          complete hone dekh raha ho. 💫🌟
+        </p>
+        <div class="page-num">Page 3 / 4</div>
+      </div>
+
+      <!-- PAGE 4 -->
+      <div class="book-page" data-page="3">
+        <div class="page-emoji">❤️</div>
+        <div class="page-heading">Ek Chhoti Si Dua...</div>
+        <div class="page-line"></div>
+        <p class="page-text">
+          Krishna aapko hamesha khush rakhe, jaise ek maa apne
+          bachche ko god mein leke sukoon deti hai. Aapki muskaan
+          kabhi kam na ho — woh muskaan jo mere dil ko roshan
+          karta hai, jaise subah ka suraj. Jitna aap deserve karti
+          hain, usse bhi zyada mile aapko — pyaar jo samandar
+          sa ho, khushi jo har lamhe mein bharpoor ho, success
+          jo aapke kadmon mein ho, aur jo bhi aap chahti hain,
+          woh sab aapke liye banaya gaya ho. Happy Birthday,
+          Rani jaan — mere dil ki raani, mere sapnon ki malika. 🎂💝❤️
+        </p>
+        <div class="page-num">Page 4 / 4</div>
+      </div>
+    </div>
+
+    <div class="book-controls">
+      <button class="book-btn" id="book-prev" onclick="prevPage()" disabled>‹</button>
+      <span class="page-counter" id="page-counter">1 / 4</span>
+      <button class="book-btn" id="book-next" onclick="nextPage()">›</button>
+    </div>
+
+    <button class="book-end-btn" id="book-end-btn" onclick="gotoScreen(4)" style="display:none;">
+      Ek aur surprise hai 🎉
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SCREEN 5 — FINAL
+════════════════════════════════════════ -->
+<div class="screen" id="screen-final">
+  <div id="float-hearts-container"></div>
+  <div class="bg-bubbles" id="bubbles-final"></div>
+  <div class="final-content">
+    <div class="sparkle-ring">
+      <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <text x="80" y="20" text-anchor="middle" font-size="16">✨</text>
+          <text x="148" y="85" text-anchor="middle" font-size="16">🌸</text>
+          <text x="80" y="150" text-anchor="middle" font-size="16">✨</text>
+          <text x="10" y="85" text-anchor="middle" font-size="16">🌸</text>
+          <text x="130" y="32" text-anchor="middle" font-size="13">⭐</text>
+          <text x="130" y="138" text-anchor="middle" font-size="13">⭐</text>
+          <text x="28" y="32" text-anchor="middle" font-size="13">⭐</text>
+          <text x="28" y="138" text-anchor="middle" font-size="13">⭐</text>
+        </g>
+      </svg>
+      <div class="big-heart">🎂</div>
+    </div>
+
+    <h1 class="final-title">Happy Birthday Rani! 🎉</h1>
+
+    <p class="final-msg">
+      Rani jaan, aap sirf ek naam nahi — aap ek feeling hain ❤️<br><br>
+      Main chahta ki aaj wahan hota, aapko personally wish karta,
+      aapse milta — but distance thodi door rakh sakta hai,
+      dil nahi. Ye chhota sa surprise sirf ye batane ke liye hai
+      ki aap mere liye kitna matter karti hain. 💫<br><br>
+      <strong>17 saal mubarak ho jaan 🌸 — ab to officially badi ho gayi!</strong>
+    </p>
+
+    <button class="glow-btn" onclick="gotoScreen(5)">I Love You Really ❤️</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SCREEN 6 — LOVE MESSAGE
+════════════════════════════════════════ -->
+<div class="screen" id="screen-love">
+  <div id="float-hearts-container"></div>
+  <div class="bg-bubbles" id="bubbles-love"></div>
+  <div class="love-content">
+    <div class="teddy-love">
+      <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <!-- Teddy Body -->
+          <ellipse cx="100" cy="140" rx="50" ry="60" fill="#8B4513"/>
+          <!-- Teddy Head -->
+          <circle cx="100" cy="80" r="40" fill="#8B4513"/>
+          <!-- Ears -->
+          <circle cx="70" cy="60" r="15" fill="#8B4513"/>
+          <circle cx="130" cy="60" r="15" fill="#8B4513"/>
+          <circle cx="70" cy="60" r="8" fill="#D2B48C"/>
+          <circle cx="130" cy="60" r="8" fill="#D2B48C"/>
+          <!-- Eyes -->
+          <circle cx="90" cy="75" r="4" fill="#000"/>
+          <circle cx="110" cy="75" r="4" fill="#000"/>
+          <!-- Nose -->
+          <ellipse cx="100" cy="85" rx="3" ry="2" fill="#000"/>
+          <!-- Mouth -->
+          <path d="M95 90 Q100 95 105 90" stroke="#000" stroke-width="2" fill="none"/>
+          <!-- Arms -->
+          <ellipse cx="60" cy="120" rx="15" ry="25" fill="#8B4513"/>
+          <ellipse cx="140" cy="120" rx="15" ry="25" fill="#8B4513"/>
+          <!-- Legs -->
+          <ellipse cx="85" cy="180" rx="15" ry="20" fill="#8B4513"/>
+          <ellipse cx="115" cy="180" rx="15" ry="20" fill="#8B4513"/>
+          <!-- Heart in Hand -->
+          <path d="M140 110 Q150 100 160 110 Q160 120 150 130 Q140 120 140 110" fill="#E91E63"/>
+        </g>
+      </svg>
+    </div>
+    <div class="heart-from-teddy">💖</div>
+    <div class="love-text">I LOVE YOU REALLY</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+  /* ═══════════════════════════════════
+     AUDIO CONFIGURATION — EDIT HERE
+  ═══════════════════════════════════ */
+  const AUDIO_URL = 'DHUN.mp3';
+  // Change AUDIO_URL to any audio file URL you want
+  // Examples:
+  //   'https://youraudio.com/song.mp3'
+  //   'audio/mysong.mp3'  (if audio file is in same folder)
+
+  /* ─── SCREENS ─── */
+  const screens = ['screen-open','screen-msg','screen-gallery','screen-book','screen-final','screen-love'];
+  let currentScreen = 0;
+
+  function gotoScreen(idx) {
+    document.getElementById(screens[currentScreen]).classList.remove('active');
+    currentScreen = idx;
+    document.getElementById(screens[currentScreen]).classList.add('active');
+    updateNavDots();
+    if (idx === 1) startTyping();
+    if (idx === 4) startFloatingHearts();
+  }
+
+  function updateNavDots() {
+    document.querySelectorAll('.nav-dot').forEach((d,i) => {
+      d.classList.toggle('active', i === currentScreen);
+    });
+  }
+
+  /* ─── BACKGROUND BUBBLES ─── */
+  function makeBubbles(containerId) {
+    const c = document.getElementById(containerId);
+    if (!c) return;
+    const colors = ['#f9a8c9','#e8b4e8','#b8d4f8','#f9d8a0','#c8e8c0'];
+    for (let i = 0; i < 12; i++) {
+      const b = document.createElement('div');
+      b.className = 'bubble';
+      const size = 20 + Math.random() * 60;
+      b.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${Math.random()*100}%;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        animation-duration:${5+Math.random()*8}s;
+        animation-delay:${-Math.random()*10}s;
+      `;
+      c.appendChild(b);
+    }
+  }
+  ['bubbles-open','bubbles-msg','bubbles-gallery','bubbles-book','bubbles-final','bubbles-love'].forEach(makeBubbles);
+
+  /* ─── TYPING ANIMATION ─── */
+  const message = `Rani, aaj aapka birthday hai aur main sachchi mein bahut excited hoon aapko wish karne ke liye! 🎉
+
+Aap 17 saal ki ho gayi — time kaise guzar jaata hai na? But ek baat jo nahi badli, woh hai aapki muskaan. Aapki woh hasi jo sach mein sab kuch theek kar deti hai. 🌸
+
+Aap bahut special hain — sirf mujhare liye nahi, un sabke liye jo aapko jaante hain. Aapki zindagi mein bahut roshan din aane wale hain — trust karo. 💫
+
+Ye din aapka hai, Rani. Celebrate karo khulke. Aap deserve karti hain sab kuch jo achha hota hai. ❤️`;
+
+  let typingDone = false;
+  function startTyping() {
+    if (typingDone) return;
+    typingDone = true;
+    const el = document.getElementById('typing-text');
+    const btn = document.getElementById('msg-next-btn');
+    let i = 0;
+    el.innerHTML = '<span class="cursor-blink"></span>';
+    function type() {
+      if (i < message.length) {
+        const ch = message[i];
+        const cursor = el.querySelector('.cursor-blink');
+        if (ch === '\n') {
+          cursor.before(document.createElement('br'));
+          if (message[i+1] === '\n') {
+            cursor.before(document.createElement('br'));
+            i++;
+          }
+        } else {
+          const t = document.createTextNode(ch);
+          cursor.before(t);
+        }
+        i++;
+        const delay = (ch === '.' || ch === '!' || ch === '?') ? 80 : 28;
+        setTimeout(type, delay);
+      } else {
+        el.querySelector('.cursor-blink')?.remove();
+        btn.classList.add('show');
+      }
+    }
+    type();
+  }
+
+  /* ─── SLIDER ─── */
+  let currentSlide = 0;
+  const totalSlides = 5;
+  let touchStartX = 0;
+
+  function buildDots() {
+    const dc = document.getElementById('slide-dots');
+    for (let i = 0; i < totalSlides; i++) {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.onclick = () => goSlide(i);
+      dc.appendChild(d);
+    }
+  }
+  buildDots();
+
+  function goSlide(n) {
+    currentSlide = Math.max(0, Math.min(n, totalSlides - 1));
+    document.getElementById('slides-track').style.transform = `translateX(-${currentSlide * 100}%)`;
+    document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === currentSlide));
+  }
+  function nextSlide() { goSlide(currentSlide + 1); }
+  function prevSlide() { goSlide(currentSlide - 1); }
+
+  function touchStart(e) { touchStartX = e.changedTouches[0].clientX; }
+  function touchEnd(e) {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) dx < 0 ? nextSlide() : prevSlide();
+  }
+
+  /* ─── BOOK ─── */
+  let currentPage = 0;
+  const totalPages = 4;
+
+  function prevPage() { gotoPage(currentPage - 1); }
+  function nextPage() { gotoPage(currentPage + 1); }
+
+  function gotoPage(n) {
+    document.querySelectorAll('.book-page').forEach(p => p.classList.remove('active'));
+    currentPage = Math.max(0, Math.min(n, totalPages - 1));
+    document.querySelectorAll('.book-page')[currentPage].classList.add('active');
+    document.getElementById('book-prev').disabled = currentPage === 0;
+    document.getElementById('book-next').disabled = currentPage === totalPages - 1;
+    document.getElementById('page-counter').textContent = `${currentPage + 1} / ${totalPages}`;
+    if (currentPage === totalPages - 1) {
+      setTimeout(() => {
+        document.getElementById('book-end-btn').style.display = 'inline-block';
+      }, 600);
+    }
+  }
+
+  /* ─── FLOATING HEARTS ─── */
+  function startFloatingHearts() {
+    const c = document.getElementById('float-hearts-container');
+    const emojis = ['❤️','🌸','💕','✨','💖','🦋','🌷','💫','🎀'];
+    setInterval(() => {
+      const h = document.createElement('div');
+      h.className = 'float-heart';
+      h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      h.style.cssText = `
+        left:${Math.random()*90+5}%;
+        bottom:-20px;
+        font-size:${1+Math.random()*1.5}rem;
+        animation-duration:${3+Math.random()*4}s;
+        animation-delay:0s;
+        --drift:${(Math.random()-0.5)*80}px;
+        position:absolute;
+      `;
+      c.appendChild(h);
+      setTimeout(() => h.remove(), 7000);
+    }, 400);
+  }
+
+  /* ─── CELEBRATE FOREVER ─── */
+  function celebrateForever() {
+    showToast('Happy Birthday Rani! Forever Smile! 💕');
+    const btn = document.querySelector('.glow-btn');
+    btn.textContent = '💖 You are loved! 💖';
+    setTimeout(() => { btn.textContent = 'Forever Smile 😊'; }, 3000);
+  }
+
+  /* ─── TOAST ─── */
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  /* ─── MUSIC ─── */
+  const audio = document.getElementById('bg-music');
+  const musicBtn = document.getElementById('music-btn');
+  let muted = true;
+
+  // Set audio source from configuration
+  const source = document.createElement('source');
+  source.src = AUDIO_URL;
+  source.type = 'audio/mpeg';
+  audio.appendChild(source);
+
+  musicBtn.onclick = () => {
+    if (muted) {
+      audio.volume = 0.35;
+      audio.play().catch(() => {});
+      musicBtn.textContent = '🎶';
+      muted = false;
+    } else {
+      audio.pause();
+      musicBtn.textContent = '🎵';
+      muted = true;
+    }
+  };
+
+  /* ─── Swipe hint fade ─── */
+  setTimeout(() => {
+    const h = document.getElementById('swipe-hint');
+    if(h) h.style.display = 'none';
+  }, 4000);
+</script>
+</body>
+</html>
